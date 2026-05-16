@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalKits | Premium International Sportswear</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Global<span>Kits</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#simulator">Simulator</a></li>
+            <li><a href="#collection">Collection</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch-effect" data-text="Wear The World">Wear The World</h1>
+            <p>Experience high-definition sportswear with seamless visuals. Dive into our interactive color simulator to visualize stunning international jerseys.</p>
+            <a href="#simulator" class="cta-btn">Start Simulation</a>
+        </div>
+        <div class="hero-bg-glow"></div>
+    </header>
+
+    <section id="simulator" class="simulation-section">
+        <div class="section-header">
+            <h2>Interactive <span>Simulation</span></h2>
+            <p>Select a country to apply its international color palette instantly.</p>
+        </div>
+        
+        <div class="simulator-container">
+            <div class="controls glass-panel">
+                <h3>Select Nation</h3>
+                <div class="country-list" id="countryList">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+            
+            <div class="display-area">
+                <div class="jersey-wrapper">
+                    <svg class="jersey-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="jerseyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" id="primaryColor" stop-color="#ffffff"/>
+                                <stop offset="100%" id="secondaryColor" stop-color="#e0e0e0"/>
+                            </linearGradient>
+                            <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#000" flood-opacity="0.5"/>
+                            </filter>
+                        </defs>
+                        <!-- Stylized Jersey Path -->
+                        <path d="M377.4,66.3c-23.8-6.1-43-25.1-49-48.9c-2-8-6.9-14.8-13.8-19C304,1,280.2,0,256,0s-48,1-58.6,4.4 c-6.8,4.2-11.8,11.1-13.8,19c-6,23.8-25.2,42.8-49,48.9c-10.3,2.6-18.7,9.6-22.9,19.3L61.6,206.5c-7,15.9-2.7,34.8,10.6,46 l38.8,32.7c13.7,11.5,34.2,9.6,45.8-4.2l12.4-14.8c1.6-1.9,3.5-3.5,5.6-4.7v215.1c0,19.5,15.8,35.4,35.4,35.4h92.1 c19.5,0,35.4-15.8,35.4-35.4V261.6c2.1,1.2,4,2.8,5.6,4.7l12.4,14.8c11.5,13.8,32.1,15.7,45.8,4.2l38.8-32.7 c13.3-11.2,17.6-30.1,10.6-46L400.3,85.6C396.1,75.9,387.7,68.9,377.4,66.3z" 
+                              fill="url(#jerseyGradient)" filter="url(#dropShadow)"/>
+                        <!-- Accent paths (collars/sleeves) -->
+                        <path id="accentColor" fill="#000000" opacity="0.8" d="M304,1c-16.7,11.7-33.4,11.7-48,0c-10.6,3.4-34.4,4.4-58.6,4.4 c-6.8,4.2-11.8,11.1-13.8,19c17.5,12.2,50,23.6,72.4,23.6s54.9-11.4,72.4-23.6c-2-8-6.9-14.8-13.8-19C309.4,3.2,306.9,2,304,1z"/>
+                    </svg>
+                </div>
+                <div class="team-info" id="teamInfo">
+                    <h2 id="teamName">Select a Team</h2>
+                    <p id="teamDesc">Explore high-definition colorways.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="collection-section">
+        <div class="section-header">
+            <h2>Featured <span>Kits</span></h2>
+            <p>Browse through the beautiful colors of international football.</p>
+        </div>
+        <div class="grid-container" id="collectionGrid">
+            <!-- JS will populate this -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
