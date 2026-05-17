@@ -13,8 +13,9 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#simulator">Simulator</a></li>
+            <li><a href="#customization">Customize</a></li>
             <li><a href="#collection">Collection</a></li>
-            <li><a href="#" id="openChat">Chat</a></li>
+            <li><a href="#" id="openChat">AI Chat</a></li>
         </ul>
     </nav>
 
@@ -68,6 +69,20 @@
         </div>
     </section>
 
+    <section id="customization" class="customization-section">
+        <div class="section-header">
+            <h2>Shirt <span>Customization</span></h2>
+            <p>Build your kit with national palettes, personal details, and premium fabrics.</p>
+        </div>
+        <div class="custom-grid" id="customizationGrid">
+            <!-- JS will populate -->
+        </div>
+        <div class="custom-cta glass-panel">
+            <p>Not sure where to start? Our AI assistant walks you through every option.</p>
+            <button type="button" class="cta-btn" id="customChatCta">Ask the AI Assistant</button>
+        </div>
+    </section>
+
     <section id="collection" class="collection-section">
         <div class="section-header">
             <h2>Featured <span>Kits</span></h2>
@@ -78,8 +93,30 @@
         </div>
     </section>
 
+    <button type="button" class="ai-chat-fab" id="aiChatFab" aria-label="Open AI chat">AI</button>
+
+    <div class="ai-chat-panel" id="aiChatPanel" aria-hidden="true" role="dialog" aria-label="GlobalKits AI Assistant">
+        <div class="ai-chat-window glass-panel">
+            <header class="ai-chat-header">
+                <div>
+                    <h3>GlobalKits AI</h3>
+                    <p>Shirt customization expert</p>
+                </div>
+                <button type="button" class="ai-chat-close" id="aiChatClose" aria-label="Close chat">&times;</button>
+            </header>
+            <div class="ai-chat-messages" id="aiChatMessages"></div>
+            <div class="ai-quick-replies" id="aiQuickReplies"></div>
+            <footer class="ai-chat-footer">
+                <input type="text" id="aiChatInput" placeholder="Ask about colors, sizing, pricing…" autocomplete="off" />
+                <button type="button" id="aiChatSend" aria-label="Send message">Send</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="customization-data.js"></script>
     <script src="script.js"></script>
+    <script src="ai-assistant.js"></script>
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2026/05/16/15/20260516153210-PHYU3KUQ.js" defer></script>
+    <script src="bot-init.js" defer></script>
 </body>
 </html>

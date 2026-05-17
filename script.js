@@ -50,12 +50,8 @@ const teams = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('openChat')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.botpress?.open?.();
-    });
-
     const countryList = document.getElementById('countryList');
+    const customizationGrid = document.getElementById('customizationGrid');
     const primaryColorStop = document.getElementById('primaryColor');
     const secondaryColorStop = document.getElementById('secondaryColor');
     const accentPath = document.getElementById('accentColor');
@@ -90,6 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         collectionGrid.appendChild(card);
     });
+
+    if (customizationGrid && window.GLOBALKITS_KNOWLEDGE) {
+        window.GLOBALKITS_KNOWLEDGE.customization.options.forEach((opt) => {
+            const card = document.createElement('div');
+            card.className = 'custom-card glass-panel';
+            card.innerHTML = `
+                <h3>${opt.name}</h3>
+                <p>${opt.description}</p>
+                <span class="custom-price">${opt.priceNote}</span>
+            `;
+            customizationGrid.appendChild(card);
+        });
+    }
 
     // Initial Selection
     applyTeamColors(teams[0]);
