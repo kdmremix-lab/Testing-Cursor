@@ -14,8 +14,8 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#simulator">Simulator</a></li>
             <li><a href="#customization">Customize</a></li>
+            <li><a href="#assistant-embed">AI Chat</a></li>
             <li><a href="#collection">Collection</a></li>
-            <li><a href="#" id="openChat">AI Chat</a></li>
         </ul>
     </nav>
 
@@ -23,7 +23,10 @@
         <div class="hero-content">
             <h1 class="glitch-effect" data-text="Wear The World">Wear The World</h1>
             <p>Experience high-definition sportswear with seamless visuals. Dive into our interactive color simulator to visualize stunning international jerseys.</p>
-            <a href="#simulator" class="cta-btn">Start Simulation</a>
+            <div class="hero-actions">
+                <a href="#simulator" class="cta-btn">Start Simulation</a>
+                <a href="#assistant-embed" class="cta-btn cta-btn-outline">Ask AI Assistant</a>
+            </div>
         </div>
         <div class="hero-bg-glow"></div>
     </header>
@@ -54,10 +57,8 @@
                                 <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#000" flood-opacity="0.5"/>
                             </filter>
                         </defs>
-                        <!-- Stylized Jersey Path -->
                         <path d="M377.4,66.3c-23.8-6.1-43-25.1-49-48.9c-2-8-6.9-14.8-13.8-19C304,1,280.2,0,256,0s-48,1-58.6,4.4 c-6.8,4.2-11.8,11.1-13.8,19c-6,23.8-25.2,42.8-49,48.9c-10.3,2.6-18.7,9.6-22.9,19.3L61.6,206.5c-7,15.9-2.7,34.8,10.6,46 l38.8,32.7c13.7,11.5,34.2,9.6,45.8-4.2l12.4-14.8c1.6-1.9,3.5-3.5,5.6-4.7v215.1c0,19.5,15.8,35.4,35.4,35.4h92.1 c19.5,0,35.4-15.8,35.4-35.4V261.6c2.1,1.2,4,2.8,5.6,4.7l12.4,14.8c11.5,13.8,32.1,15.7,45.8,4.2l38.8-32.7 c13.3-11.2,17.6-30.1,10.6-46L400.3,85.6C396.1,75.9,387.7,68.9,377.4,66.3z" 
                               fill="url(#jerseyGradient)" filter="url(#dropShadow)"/>
-                        <!-- Accent paths (collars/sleeves) -->
                         <path id="accentColor" fill="#000000" opacity="0.8" d="M304,1c-16.7,11.7-33.4,11.7-48,0c-10.6,3.4-34.4,4.4-58.6,4.4 c-6.8,4.2-11.8,11.1-13.8,19c17.5,12.2,50,23.6,72.4,23.6s54.9-11.4,72.4-23.6c-2-8-6.9-14.8-13.8-19C309.4,3.2,306.9,2,304,1z"/>
                     </svg>
                 </div>
@@ -77,9 +78,20 @@
         <div class="custom-grid" id="customizationGrid">
             <!-- JS will populate -->
         </div>
-        <div class="custom-cta glass-panel">
-            <p>Not sure where to start? Our AI assistant walks you through every option.</p>
-            <button type="button" class="cta-btn" id="customChatCta">Ask the AI Assistant</button>
+
+        <div id="assistant-embed" class="assistant-embed glass-panel">
+            <header class="ai-chat-header">
+                <div>
+                    <h3>GlobalKits AI Assistant</h3>
+                    <p>Embedded shirt customization expert — ask about colors, sizing, pricing &amp; orders</p>
+                </div>
+            </header>
+            <div class="ai-chat-messages" id="aiChatMessages"></div>
+            <div class="ai-quick-replies" id="aiQuickReplies"></div>
+            <footer class="ai-chat-footer">
+                <input type="text" id="aiChatInput" placeholder="Ask about colors, sizing, pricing…" autocomplete="off" />
+                <button type="button" id="aiChatSend" aria-label="Send message">Send</button>
+            </footer>
         </div>
     </section>
 
@@ -93,25 +105,7 @@
         </div>
     </section>
 
-    <button type="button" class="ai-chat-fab" id="aiChatFab" aria-label="Open AI chat">AI</button>
-
-    <div class="ai-chat-panel" id="aiChatPanel" aria-hidden="true" role="dialog" aria-label="GlobalKits AI Assistant">
-        <div class="ai-chat-window glass-panel">
-            <header class="ai-chat-header">
-                <div>
-                    <h3>GlobalKits AI</h3>
-                    <p>Shirt customization expert</p>
-                </div>
-                <button type="button" class="ai-chat-close" id="aiChatClose" aria-label="Close chat">&times;</button>
-            </header>
-            <div class="ai-chat-messages" id="aiChatMessages"></div>
-            <div class="ai-quick-replies" id="aiQuickReplies"></div>
-            <footer class="ai-chat-footer">
-                <input type="text" id="aiChatInput" placeholder="Ask about colors, sizing, pricing…" autocomplete="off" />
-                <button type="button" id="aiChatSend" aria-label="Send message">Send</button>
-            </footer>
-        </div>
-    </div>
+    <button type="button" class="ai-chat-fab" id="aiChatFab" aria-label="Scroll to AI assistant">AI</button>
 
     <script src="customization-data.js"></script>
     <script src="script.js"></script>

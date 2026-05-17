@@ -2,14 +2,13 @@
     const knowledge = window.GLOBALKITS_KNOWLEDGE;
     if (!knowledge) return;
 
-    const panel = document.getElementById('aiChatPanel');
+    const embed = document.getElementById('assistant-embed');
     const messagesEl = document.getElementById('aiChatMessages');
     const inputEl = document.getElementById('aiChatInput');
     const sendBtn = document.getElementById('aiChatSend');
-    const closeBtn = document.getElementById('aiChatClose');
     const quickRepliesEl = document.getElementById('aiQuickReplies');
 
-    if (!panel || !messagesEl || !inputEl) return;
+    if (!embed || !messagesEl || !inputEl) return;
 
     const WELCOME =
         "Hi! I'm the GlobalKits AI assistant. I can help with shirt customization — colors, names, numbers, sizing, bulk orders, pricing, and turnaround. What would you like to design today?";
@@ -154,7 +153,7 @@
         inputEl.value = '';
         sendBtn.disabled = true;
 
-        const typing = showTyping();
+        showTyping();
         await new Promise((r) => setTimeout(r, 400 + Math.random() * 500));
         removeTyping();
 
@@ -185,19 +184,17 @@
         });
     }
 
-    function openPanel() {
-        panel.classList.add('open');
-        panel.setAttribute('aria-hidden', 'false');
-        if (!panel.dataset.greeted) {
-            appendMessage('bot', WELCOME);
-            panel.dataset.greeted = '1';
-        }
-        inputEl.focus();
+    function scrollToAssistant() {
+        embed.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        embed.classList.add('assistant-highlight');
+        setTimeout(() => embed.classList.remove('assistant-highlight'), 1600);
+        setTimeout(() => inputEl.focus(), 400);
     }
 
-    function closePanel() {
-        panel.classList.remove('open');
-        panel.setAttribute('aria-hidden', 'true');
+    function greet() {
+        if (embed.dataset.greeted) return;
+        appendMessage('bot', WELCOME);
+        embed.dataset.greeted = '1';
     }
 
     sendBtn.addEventListener('click', () => {
@@ -213,20 +210,17 @@
         }
     });
 
-    closeBtn?.addEventListener('click', closePanel);
-    panel.addEventListener('click', (e) => {
-        if (e.target === panel) closePanel();
+    document.getElementById('aiChatFab')?.addEventListener('click', scrollToAssistant);
+
+    document.querySelectorAll('a[href="#assistant-embed"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToAssistant();
+        });
     });
-
-    document.getElementById('openChat')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPanel();
-    });
-
-    document.getElementById('customChatCta')?.addEventListener('click', openPanel);
-
-    document.getElementById('aiChatFab')?.addEventListener('click', openPanel);
 
     renderQuickReplies();
-    window.GlobalKitsAI = { open: openPanel, close: closePanel, respond };
+    greet();
+
+    window.GlobalKitsAI = { scrollTo: scrollToAssistant, respond };
 })();
