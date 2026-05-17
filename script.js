@@ -50,6 +50,11 @@ const teams = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('openChat')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.botpress?.open?.();
+    });
+
     const countryList = document.getElementById('countryList');
     const primaryColorStop = document.getElementById('primaryColor');
     const secondaryColorStop = document.getElementById('secondaryColor');

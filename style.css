@@ -291,3 +291,33 @@ body {
         font-size: 3.5rem;
     }
 }
+
+/* Botpress Webchat */
+.bpFabWrapper {
+    z-index: 1000 !important;
+    bottom: 24px !important;
+    right: 24px !important;
+}
+
+.bpWebchat {
+    z-index: 1001 !important;
+    bottom: 88px !important;
+    right: 24px !important;
+    max-height: min(640px, calc(100vh - 120px)) !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+@media (max-width: 768px) {
+    .bpFabWrapper {
+        bottom: 16px !important;
+        right: 16px !important;
+    }
+    .bpWebchat {
+        right: 16px !important;
+        left: 16px !important;
+        width: auto !important;
+        max-height: calc(100vh - 100px) !important;
+    }
+}
